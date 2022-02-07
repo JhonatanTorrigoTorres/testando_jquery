@@ -5,15 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-3.6.0.js"></script>
         <title>Testando o jQuery</title>
     </head>
     <body>
         <h1>Contador de palavras</h1>
-        <p class="frase">Lorem psum dolor sit, amet consectetur adipisicing elit. Odio quibusdam quod maxime. Eos perspiciatis modi delectus nobis labore quidem debitis fuga, similique explicabo repudiandae culpa libero consequuntur officia tempora natus!</p>
+        <p class="frase">Lo rem psum dolor sit, amet consectetur adipisicing elit. Odio quibusdam quod maxime. Eos perspiciatis modi delectus nobis labore quidem debitis fuga, similique explicabo repudiandae culpa libero consequuntur officia tempora natus!</p>
         <ul>
             <li><span id="quant_palavras"></span> Palavras</li>
             <li>10 segundos</li>
+        </ul>
+        <textarea class="campo_digitacao" cols="40" rows="8"></textarea>
+        <ul>
+            <li><span id="num_palavras"></span> Palavras</li>
+            <li><span id="num_caracteres"></span> Caracteres</li>
         </ul>
     </body>
     <script>
@@ -21,5 +26,16 @@
         var numPalavras = frase.split(" ").length;
         var tamanhoFrase = $("#quant_palavras");
         tamanhoFrase.text(numPalavras);
+
+        var campo = $(".campo_digitacao");
+        campo.on("input", function() {
+            var conteudo = campo.val();
+
+            var contPalavras = conteudo.split(/\S+/).length - 1;
+            $("#num_palavras").text(contPalavras);
+
+            var contCaracteres = conteudo.length;
+            $("#num_caracteres").text(contCaracteres);
+        });
     </script>
 </html>
