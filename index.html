@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script>
+        <title>Testando o jQuery</title>
+    </head>
+    <body>
+        <h1>Contador de palavras</h1>
+        <p class="frase">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio quibusdam quod maxime. Eos perspiciatis modi delectus nobis labore quidem debitis fuga, similique explicabo repudiandae culpa libero consequuntur officia tempora natus!</p>
+        <ul>
+            <li><span id="quant_palavras"></span> Palavras</li>
+            <li>10 segundos</li>
+        </ul>
+    </body>
+    <script>
+        var frase = $(".frase").text();
+        var numPalavras = frase.split(" ").length;
+        var tamanhoFrase = $("#quant_palavras");
+        tamanhoFrase.text(numPalavras);
+    </script>
+</html>
