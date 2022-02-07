@@ -13,7 +13,7 @@
         <p class="frase">Lo rem psum dolor sit, amet consectetur adipisicing elit. Odio quibusdam quod maxime. Eos perspiciatis modi delectus nobis labore quidem debitis fuga, similique explicabo repudiandae culpa libero consequuntur officia tempora natus!</p>
         <ul>
             <li><span id="quant_palavras"></span> Palavras</li>
-            <li>10 segundos</li>
+            <li><span id="tempo_digitacao">10</span> segundos</li>
         </ul>
         <textarea class="campo_digitacao" cols="40" rows="8"></textarea>
         <ul>
@@ -36,6 +36,17 @@
 
             var contCaracteres = conteudo.length;
             $("#num_caracteres").text(contCaracteres);
+        });
+        var tempoRestante = $("#tempo_digitacao").text();
+        campo.one("focus", function() {
+            var cronometroID = setInterval(function() {
+                tempoRestante--;
+                $("#tempo_digitacao").text(tempoRestante);
+                if (tempoRestante < 1) {
+                    campo.attr("disabled", true);
+                    clearInterval(cronometroID);
+                }
+            }, 1000);
         });
     </script>
 </html>
